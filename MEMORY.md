@@ -8,24 +8,24 @@ Newest entries at the **top** of each section.
 
 ### Current focus
 
-- T004: implement MS02 todo CLI under adversarial session ledger rules.
+- **T004** MS02 todo CLI — Session S1 only (`add`/`list` + ledger phase 1).
 
 ### Done
 
-- T007: hardened structural (negative evidence/status checks) + continuity suite + MS02 pack definition.
-- T001–T003, T006.
+- T007 harder eval landed.
+- Hardened scores: structural **100/20**, continuity **100/9** when state aligned.
 
 ### Next
 
-- Run hardened suites; record new scores (expect structural may still be high; continuity is the real gate).
-- Implement MS02 S1 only in a dedicated step (ledger phase 1).
+- Implement MS02 S1 under adversarial rules; do not one-shot S2/S3.
 
 ---
 
 ## Pitfalls / decisions
 
-- Easy structural scores are not enough; continuity suite + ledger gates address inflation.
-- Fabricating a full ledger in one push must be scored down on T004.
+- **Static suite ceiling is still reachable.** Negative checks prevent *sloppy* harness state but a careful agent still scores 100. Real discrimination = MS02 + future packs + external Terminal-Bench mapping.
+- Empty evidence on `done` features now fails structural.
+- Continuity fails if progress/handoff omit active feature id.
 
 ---
 
@@ -33,9 +33,11 @@ Newest entries at the **top** of each section.
 
 | When | Suite | Score | Notes |
 |------|-------|------:|-------|
-| 2026-11-03 | structural v1 | 88.24 → 100 | too easy |
+| 2026-11-03 | structural v1 | 88→100 | easy contracts |
 | 2026-11-03 | ms01 | 70 | one-shot penalty |
-| 2026-11-03 | structural v2 + continuity | *measure after T007* | |
+| 2026-11-03 | structural v2 | 100/20 | negatives included, still full |
+| 2026-11-03 | continuity | 100/9 | state aligned |
+| 2026-11-03 | ms02 | pending | adversarial |
 
 ---
 
@@ -43,4 +45,4 @@ Newest entries at the **top** of each section.
 
 ### 2026-11-03
 
-- T007 landed: negative structural checks, continuity audit, MS02 adversarial SPEC.
+- T007 complete; T004 activated.

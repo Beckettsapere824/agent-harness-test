@@ -47,7 +47,7 @@
     {
       "id": "T004",
       "title": "Multi-session task pack v2 (todo CLI) — harder",
-      "status": "todo",
+      "status": "in_progress",
       "priority": 4,
       "depends_on": ["T007"],
       "definition_of_done": [
@@ -56,7 +56,7 @@
         "Score recorded with continuity honesty rules"
       ],
       "evidence": "",
-      "notes": "SPEC+verify added under T007; implementation is T004"
+      "notes": "SPEC+verify under eval/tasks/ms02_todo; implement S1 only next"
     },
     {
       "id": "T005",
@@ -96,8 +96,8 @@
         "Continuity suite measures handoff alignment",
         "Adversarial MS02 pack defined so one-shot cannot max continuity"
       ],
-      "evidence": "eval/run_suite.py structural+continuity; eval/tasks/ms02_todo SPEC+verify",
-      "notes": ""
+      "evidence": "eval/run_suite.py structural+continuity; eval/tasks/ms02_todo SPEC+verify; scores 20261103-hardened",
+      "notes": "Static suites still saturatable when state is well-kept; hardness is MS02 ledger + real dialog cuts"
     }
   ]
 }

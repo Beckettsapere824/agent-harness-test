@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "20261103-hardened",
+  "results": [
+    {"suite": "structural", "score": 100.0, "passed": 20, "total": 20},
+    {"suite": "continuity", "score": 100.0, "passed": 9, "total": 9}
+  ],
+  "aggregate_score": 100.0,
+  "interpretation": "Static suites pass at ceiling when harness files are disciplined. They catch regressions (empty evidence, misaligned handoff) but do not measure coding skill. True pressure is MS02 ledger gates + multi-dialog execution."
+}
