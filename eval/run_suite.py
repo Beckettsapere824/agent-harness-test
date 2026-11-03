@@ -13,22 +13,20 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def check_structural() -> dict:
-    """Five-subsystem + file contract checks. Each item: pass bool + detail."""
-    checks = []
+    """Five-subsystem + file contract checks."""
+    checks: list[dict] = []
 
     def add(name: str, ok: bool, detail: str = "") -> None:
         checks.append({"name": name, "pass": bool(ok), "detail": detail})
 
-    # Instructions
     agent = ROOT / "AGENT.md"
     add("instructions.AGENT.md_exists", agent.is_file())
     if agent.is_file():
         text = agent.read_text(encoding="utf-8")
         add("instructions.has_startup", "Startup" in text or "startup" in text.lower())
-        add("instructions.has_definition_of_done", "Definition of Done" in text or "done" in text.lower())
+        add("instructions.has_definition_of_done", "Definition of Done" in text)
         add("instructions.not_encyclopedia", len(text) < 12000, f"chars={len(text)}")
 
-    # State
     memory = ROOT / "MEMORY.md"
     fl = ROOT / "feature_list.json"
     progress = ROOT / "progress.md"
@@ -43,40 +41,31 @@ def check_structural() -> dict:
             statuses = [f.get("status") for f in feats if isinstance(f, dict)]
             in_prog = sum(1 for s in statuses if s == "in_progress")
             add("state.at_most_one_in_progress", in_prog <= 1, f"in_progress={in_prog}")
+            ok_dod = all(
+                isinstance(f.get("definition_of_done"), list) and len(f["definition_of_done"]) > 0
+                for f in feats
+                if isinstance(f, dict)
+            )
+            add("scope.feature_list_has_dod", ok_dod)
         except json.JSONDecodeError as e:
             add("state.feature_list_valid", False, str(e))
+            add("scope.feature_list_has_dod", False, "invalid json")
 
-    # Verification
     init = ROOT / "init.sh"
     add("verification.init.sh_exists", init.is_file())
     if agent.is_file():
         t = agent.read_text(encoding="utf-8")
         add("verification.commands_documented", "init.sh" in t or "Verification" in t)
 
-    # Scope
-    add("scope.feature_list_has_dod", False)
-    if fl.is_file():
-        try:
-            data = json.loads(fl.read_text(encoding="utf-8"))
-            feats = data.get("features") or []
-            ok = all(
-                isinstance(f.get("definition_of_done"), list) and len(f["definition_of_done"]) > 0
-                for f in feats
-                if isinstance(f, dict)
-            )
-            add("scope.feature_list_has_dod", ok)
-        except json.JSONDecodeError:
-            pass
-
-    # Lifecycle
     handoff = ROOT / "session-handoff.md"
     tasks = ROOT / "TASKS.md"
     add("lifecycle.session-handoff_exists", handoff.is_file())
     add("lifecycle.TASKS.md_exists", tasks.is_file())
-    add("lifecycle.progress_mentions_next", False)
     if progress.is_file():
         p = progress.read_text(encoding="utf-8").lower()
         add("lifecycle.progress_mentions_next", "next" in p)
+    else:
+        add("lifecycle.progress_mentions_next", False)
 
     passed = sum(1 for c in checks if c["pass"])
     total = len(checks)
@@ -119,7 +108,6 @@ def main() -> int:
     if not args.quiet:
         print(json.dumps(payload, indent=2))
 
-    # Fail if any suite score < 50 (hard floor for init)
     bad = any(r["score"] < 50 for r in results)
     return 1 if bad else 0
 

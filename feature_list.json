@@ -19,30 +19,30 @@
     {
       "id": "T002",
       "title": "Establish structural baseline scores",
-      "status": "in_progress",
+      "status": "done",
       "priority": 2,
       "depends_on": ["T001"],
       "definition_of_done": [
         "python3 -m eval.run_suite --suite structural exits 0",
-        "Score JSON written under eval/scores/",
+        "Score JSON under eval/scores/",
         "MEMORY.md records baseline numbers"
       ],
-      "evidence": "",
-      "notes": "Measures five subsystems + file contracts"
+      "evidence": "eval/scores/20261103-baseline-structural.json score=88.24; scorer fixed",
+      "notes": ""
     },
     {
       "id": "T003",
       "title": "Multi-session task pack v1 (counter app)",
-      "status": "todo",
+      "status": "in_progress",
       "priority": 3,
       "depends_on": ["T002"],
       "definition_of_done": [
-        "eval/tasks/ms01_counter/ defined with session scripts and golden checks",
-        "Agent can complete across simulated session boundaries using only repo state",
-        "Score recorded"
+        "eval/tasks/ms01_counter/ defined with SPEC and verify.sh",
+        "Agent completes across session boundaries using only repo state",
+        "verify.sh exit 0; score recorded"
       ],
-      "evidence": "",
-      "notes": "Tests continuity, handoff, verification"
+      "evidence": "SPEC+verify committed; implementation pending S1-S3",
+      "notes": ""
     },
     {
       "id": "T004",
@@ -70,19 +70,19 @@
         "Patterns cited from frontier open source where applicable"
       ],
       "evidence": "",
-      "notes": "Continuous; re-open as needed"
+      "notes": "Continuous"
     },
     {
       "id": "T006",
       "title": "External benchmark alignment notes",
-      "status": "todo",
+      "status": "done",
       "priority": 6,
       "depends_on": ["T002"],
       "definition_of_done": [
-        "docs/benchmarks.md maps our metrics to TraceTrial / Terminal-Bench / SWE-bench dimensions",
-        "Clear statement of what we can and cannot run in this environment"
+        "docs/benchmarks.md maps metrics to TraceTrial / Terminal-Bench / SWE-bench",
+        "Clear statement of in-env vs offline"
       ],
-      "evidence": "",
+      "evidence": "docs/benchmarks.md present",
       "notes": ""
     }
   ]

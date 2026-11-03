@@ -4,9 +4,9 @@
 
 ## Current
 
-- **Active feature:** T002 — Establish structural baseline scores
-- **State:** Harness + eval skeleton just committed; need to run structural suite and record scores.
-- **Next step:** Run `python3 -m eval.run_suite --suite structural` (or via init if wired), write score file, update MEMORY.
+- **Active feature:** T003 — Multi-session task pack v1 (counter app)
+- **State:** Structural baseline recorded; MS01 SPEC + verify.sh ready; implementation not started.
+- **Next step:** Session S1 of MS01 — create `work/counter.py` with `init` and `get` only; run init; update handoff.
 - **Blockers:** None.
 
 ---
@@ -15,5 +15,4 @@
 
 ### 2026-11-03
 
-- Bootstrapped agent-harness-test with harness copy + TASKS.md + eval suite.
-- T001 done.
+- T001 done; T002 baseline 88.24 then scorer fix; opened T003.

@@ -8,28 +8,34 @@ Newest entries at the **top** of each section.
 
 ### Current focus
 
-- Bootstrap evaluation program in `agent-harness-test`.
-- Establish baseline structural scores; then multi-session task scores.
+- T003: Multi-session pack MS01 (counter) — implement under harness discipline.
 
 ### Done
 
-- Harness core files copied from `agent-harness`.
-- `TASKS.md` solidified for long-running optimization loop.
-- Initial `eval/` suite: structural harness checks + synthetic multi-session tasks.
+- Harness bootstrapped in agent-harness-test.
+- Structural suite live; first baseline **88.24** (scorer had duplicate checks; fixed toward 100).
+- TASKS.md + docs/benchmarks.md + MS01 SPEC/verify committed.
 
 ### Next
 
-- Run structural suite; record baseline in `eval/scores/`.
-- Implement / harden first multi-session task package.
-- Iterate harness based on failures; pull patterns from frontier open source.
+- Implement MS01 across simulated sessions (S1→S2→S3) using only repo state between sessions.
+- Record MS01 score; then iterate harness on failures (T005).
 
 ---
 
 ## Pitfalls / decisions
 
-- External full SWE-bench / Terminal-Bench runs need container infra; treat them as **aspirational / offline** targets. Primary loop = structural + in-repo multi-session tasks that Grok can execute via GitHub + sandbox.
-- Optimize for: cross-session continuity, verification gates, scope discipline, progressive disclosure — not token bloat.
-- Prefer small pure-Python / shell tasks so verification is deterministic.
+- External Terminal-Bench / SWE-bench need containers → secondary yardsticks; primary loop is structural + `eval/tasks/ms*`.
+- Structural scorer must not double-`add` the same check (fixed).
+- Keep task code under `work/` pure Python for sandbox determinism.
+
+---
+
+## Scores
+
+| When | Suite | Score | Notes |
+|------|-------|-------|-------|
+| 2026-11-03 | structural | 88.24 | baseline pre-fix |
 
 ---
 
@@ -37,5 +43,5 @@ Newest entries at the **top** of each section.
 
 ### 2026-11-03
 
-- Initialized test repo with harness + evaluation program.
-- Benchmark references: TraceTrial-Bench (7 components), Harness-Bench, Doc2Harness, Terminal-Bench / SWE-bench as external yardsticks; learn-harness five subsystems as internal rubric.
+- Bootstrap + baseline + MS01 pack added.
+- Benchmark refs: TraceTrial-Bench, Harness-Bench, Doc2Harness, Terminal-Bench, SWE-bench, learn-harness five subsystems.

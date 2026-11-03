@@ -1,0 +1,14 @@
+{
+  "timestamp_utc": "20261103-baseline",
+  "note": "First measured baseline after bootstrap; scorer later fixed for duplicate checks",
+  "results": [
+    {
+      "suite": "structural",
+      "score": 88.24,
+      "passed": 15,
+      "total": 17,
+      "comment": "Duplicate false-then-true checks inflated total; post-fix expected 100"
+    }
+  ],
+  "aggregate_score": 88.24
+}
