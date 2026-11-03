@@ -27,13 +27,13 @@
         "Score JSON under eval/scores/",
         "MEMORY.md records baseline numbers"
       ],
-      "evidence": "eval/scores/20261103-baseline-structural.json score=88.24; scorer fixed",
+      "evidence": "eval/scores/20261103-baseline-structural.json score=88.24",
       "notes": ""
     },
     {
       "id": "T003",
       "title": "Multi-session task pack v1 (counter app)",
-      "status": "in_progress",
+      "status": "done",
       "priority": 3,
       "depends_on": ["T002"],
       "definition_of_done": [
@@ -41,22 +41,22 @@
         "Agent completes across session boundaries using only repo state",
         "verify.sh exit 0; score recorded"
       ],
-      "evidence": "SPEC+verify committed; implementation pending S1-S3",
-      "notes": ""
+      "evidence": "work/counter.py + eval/scores/20261103-ms01.json score=70 (session cuts not truly simulated)",
+      "notes": "Collapsed sessions → scope/session partial credit"
     },
     {
       "id": "T004",
-      "title": "Multi-session task pack v2 (todo CLI)",
+      "title": "Multi-session task pack v2 (todo CLI) — harder",
       "status": "todo",
       "priority": 4,
       "depends_on": ["T003"],
       "definition_of_done": [
-        "CRUD CLI across 3+ sessions",
+        "CRUD CLI across 3+ sessions with adversarial incomplete handoffs",
         "Scope discipline and evidence gates measured",
         "Score recorded"
       ],
       "evidence": "",
-      "notes": ""
+      "notes": "Must be harder than MS01"
     },
     {
       "id": "T005",
@@ -84,6 +84,20 @@
       ],
       "evidence": "docs/benchmarks.md present",
       "notes": ""
+    },
+    {
+      "id": "T007",
+      "title": "Harder eval: raise structural difficulty + adversarial multi-session",
+      "status": "todo",
+      "priority": 3,
+      "depends_on": ["T003"],
+      "definition_of_done": [
+        "Structural suite includes negative tests (missing evidence, double in_progress, etc.)",
+        "At least one adversarial pack that fails naive one-shot completion",
+        "Aggregate scores no longer saturate near ceiling without real continuity"
+      ],
+      "evidence": "",
+      "notes": "Response to score inflation concern"
     }
   ]
 }

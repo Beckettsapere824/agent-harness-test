@@ -8,26 +8,26 @@ Newest entries at the **top** of each section.
 
 ### Current focus
 
-- T003: Multi-session pack MS01 (counter) — implement under harness discipline.
+- Scores are partly inflated: structural is file-contract heavy; MS01 was completed in one shot (not true multi-dialog).
+- Next: T007 harden eval + T004 harder multi-session pack.
 
 ### Done
 
-- Harness bootstrapped in agent-harness-test.
-- Structural suite live; first baseline **88.24** (scorer had duplicate checks; fixed toward 100).
-- TASKS.md + docs/benchmarks.md + MS01 SPEC/verify committed.
+- T001–T003, T006.
+- MS01 implementation + score file (70/100 with honesty notes).
 
 ### Next
 
-- Implement MS01 across simulated sessions (S1→S2→S3) using only repo state between sessions.
-- Record MS01 score; then iterate harness on failures (T005).
+- T007: negative structural tests + adversarial multi-session so ceiling is not free.
+- T004: harder todo CLI pack.
 
 ---
 
 ## Pitfalls / decisions
 
-- External Terminal-Bench / SWE-bench need containers → secondary yardsticks; primary loop is structural + `eval/tasks/ms*`.
-- Structural scorer must not double-`add` the same check (fixed).
-- Keep task code under `work/` pure Python for sandbox determinism.
+- **Score inflation risk is real.** High structural scores do not imply Terminal-Bench-class skill.
+- Collapsing multi-session packs into one agent turn must be penalized (MS01 did so → 70 not 100).
+- Primary value is continuity under dialog reset; tests must force that.
 
 ---
 
@@ -35,7 +35,9 @@ Newest entries at the **top** of each section.
 
 | When | Suite | Score | Notes |
 |------|-------|-------|-------|
-| 2026-11-03 | structural | 88.24 | baseline pre-fix |
+| 2026-11-03 | structural | 88.24 | baseline; easy file contracts |
+| 2026-11-03 | ms01_counter | 70 | impl+verify ok; session/scope partial |
+| 2026-11-03 | **aggregate (equal weight)** | **79.12** | not frontier-hard |
 
 ---
 
@@ -43,5 +45,5 @@ Newest entries at the **top** of each section.
 
 ### 2026-11-03
 
-- Bootstrap + baseline + MS01 pack added.
-- Benchmark refs: TraceTrial-Bench, Harness-Bench, Doc2Harness, Terminal-Bench, SWE-bench, learn-harness five subsystems.
+- MS01 completed in single push; scored honestly below 100.
+- Acknowledged eval too easy; queued T007.

@@ -4,9 +4,9 @@
 
 ## Current
 
-- **Active feature:** T003 — Multi-session task pack v1 (counter app)
-- **State:** Structural baseline recorded; MS01 SPEC + verify.sh ready; implementation not started.
-- **Next step:** Session S1 of MS01 — create `work/counter.py` with `init` and `get` only; run init; update handoff.
+- **Active feature:** T007 — Harden eval (negative tests + adversarial multi-session)
+- **State:** MS01 done at 70; aggregate ~79; acknowledged score inflation.
+- **Next step:** Extend structural suite with negative cases; design MS02/adversarial pack that fails one-shot completion.
 - **Blockers:** None.
 
 ---
@@ -15,4 +15,4 @@
 
 ### 2026-11-03
 
-- T001 done; T002 baseline 88.24 then scorer fix; opened T003.
+- MS01 implemented; verify expected green; score 70 with honesty notes.

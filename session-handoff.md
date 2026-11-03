@@ -6,25 +6,21 @@
 
 ## Active feature
 
-T003 — MS01 counter multi-session pack
+T007 — Harder eval: raise structural difficulty + adversarial multi-session
 
 ## What was done
 
-- Structural baseline recorded.
-- MS01 SPEC.md + verify.sh added under `eval/tasks/ms01_counter/`.
+- MS01 `work/counter.py` complete; score 70/100 recorded.
+- Aggregate ~79 acknowledged as not hard enough.
 
 ## What remains
 
-1. **S1:** Implement `work/counter.py` with `init` + `get` only; persist to `work/count.json`; handoff.
-2. **S2:** Add `inc`.
-3. **S3:** Add `add N`; run `bash eval/tasks/ms01_counter/verify.sh`; record score/evidence.
+1. Add negative structural checks (e.g. detect missing evidence on done features, >1 in_progress fails harder).
+2. Add adversarial multi-session pack or tighten MS scoring so one-shot cannot max out continuity points.
+3. Then T004 harder todo CLI.
 
 ## How to resume
 
-1. Read AGENT.md → MEMORY.md → feature_list.json → this file → `eval/tasks/ms01_counter/SPEC.md`.
+1. AGENT.md → MEMORY.md → feature_list.json → this file.
 2. `./init.sh`
-3. Continue only the next incomplete MS01 session.
-
-## Risks / notes
-
-- Do not implement all commands in S1 (scope discipline is scored).
+3. Work T007 only until evidence exists.
