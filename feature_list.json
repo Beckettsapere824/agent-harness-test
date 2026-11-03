@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "description": "Long-running harness optimization program. One active feature at a time.",
+  "features": [
+    {
+      "id": "T001",
+      "title": "Bootstrap harness + eval skeleton in agent-harness-test",
+      "status": "done",
+      "priority": 1,
+      "depends_on": [],
+      "definition_of_done": [
+        "Core harness files present",
+        "TASKS.md, eval/ structure, structural runner present",
+        "init.sh passes"
+      ],
+      "evidence": "Committed 2026-11-03",
+      "notes": ""
+    },
+    {
+      "id": "T002",
+      "title": "Establish structural baseline scores",
+      "status": "in_progress",
+      "priority": 2,
+      "depends_on": ["T001"],
+      "definition_of_done": [
+        "python3 -m eval.run_suite --suite structural exits 0",
+        "Score JSON written under eval/scores/",
+        "MEMORY.md records baseline numbers"
+      ],
+      "evidence": "",
+      "notes": "Measures five subsystems + file contracts"
+    },
+    {
+      "id": "T003",
+      "title": "Multi-session task pack v1 (counter app)",
+      "status": "todo",
+      "priority": 3,
+      "depends_on": ["T002"],
+      "definition_of_done": [
+        "eval/tasks/ms01_counter/ defined with session scripts and golden checks",
+        "Agent can complete across simulated session boundaries using only repo state",
+        "Score recorded"
+      ],
+      "evidence": "",
+      "notes": "Tests continuity, handoff, verification"
+    },
+    {
+      "id": "T004",
+      "title": "Multi-session task pack v2 (todo CLI)",
+      "status": "todo",
+      "priority": 4,
+      "depends_on": ["T003"],
+      "definition_of_done": [
+        "CRUD CLI across 3+ sessions",
+        "Scope discipline and evidence gates measured",
+        "Score recorded"
+      ],
+      "evidence": "",
+      "notes": ""
+    },
+    {
+      "id": "T005",
+      "title": "Harness iteration from failure modes",
+      "status": "todo",
+      "priority": 5,
+      "depends_on": ["T003"],
+      "definition_of_done": [
+        "Documented failure clusters",
+        "At least one harness file improved with measurable score lift",
+        "Patterns cited from frontier open source where applicable"
+      ],
+      "evidence": "",
+      "notes": "Continuous; re-open as needed"
+    },
+    {
+      "id": "T006",
+      "title": "External benchmark alignment notes",
+      "status": "todo",
+      "priority": 6,
+      "depends_on": ["T002"],
+      "definition_of_done": [
+        "docs/benchmarks.md maps our metrics to TraceTrial / Terminal-Bench / SWE-bench dimensions",
+        "Clear statement of what we can and cannot run in this environment"
+      ],
+      "evidence": "",
+      "notes": ""
+    }
+  ]
+}
