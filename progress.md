@@ -4,9 +4,9 @@
 
 ## Current
 
-- **Active feature:** T007 — Harden eval (negative tests + adversarial multi-session)
-- **State:** MS01 done at 70; aggregate ~79; acknowledged score inflation.
-- **Next step:** Extend structural suite with negative cases; design MS02/adversarial pack that fails one-shot completion.
+- **Active feature:** T004 — Multi-session task pack v2 (todo CLI)
+- **State:** T007 done (harder eval shipped). MS02 SPEC+verify ready; implementation not started.
+- **Next step:** MS02 Session S1 only — `add`+`list` in `work/todo.py`, append ledger phase 1, stop.
 - **Blockers:** None.
 
 ---
@@ -15,4 +15,4 @@
 
 ### 2026-11-03
 
-- MS01 implemented; verify expected green; score 70 with honesty notes.
+- T007 complete; pointed active work at T004.

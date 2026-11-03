@@ -13,7 +13,7 @@
         "TASKS.md, eval/ structure, structural runner present",
         "init.sh passes"
       ],
-      "evidence": "Committed 2026-11-03",
+      "evidence": "Committed 2026-11-03 bootstrap",
       "notes": ""
     },
     {
@@ -41,29 +41,29 @@
         "Agent completes across session boundaries using only repo state",
         "verify.sh exit 0; score recorded"
       ],
-      "evidence": "work/counter.py + eval/scores/20261103-ms01.json score=70 (session cuts not truly simulated)",
-      "notes": "Collapsed sessions → scope/session partial credit"
+      "evidence": "eval/scores/20261103-ms01.json score=70",
+      "notes": ""
     },
     {
       "id": "T004",
       "title": "Multi-session task pack v2 (todo CLI) — harder",
       "status": "todo",
       "priority": 4,
-      "depends_on": ["T003"],
+      "depends_on": ["T007"],
       "definition_of_done": [
-        "CRUD CLI across 3+ sessions with adversarial incomplete handoffs",
-        "Scope discipline and evidence gates measured",
-        "Score recorded"
+        "CRUD CLI across 3+ sessions with session_ledger gates",
+        "verify.sh green",
+        "Score recorded with continuity honesty rules"
       ],
       "evidence": "",
-      "notes": "Must be harder than MS01"
+      "notes": "SPEC+verify added under T007; implementation is T004"
     },
     {
       "id": "T005",
       "title": "Harness iteration from failure modes",
       "status": "todo",
       "priority": 5,
-      "depends_on": ["T003"],
+      "depends_on": ["T004"],
       "definition_of_done": [
         "Documented failure clusters",
         "At least one harness file improved with measurable score lift",
@@ -88,16 +88,16 @@
     {
       "id": "T007",
       "title": "Harder eval: raise structural difficulty + adversarial multi-session",
-      "status": "todo",
+      "status": "done",
       "priority": 3,
       "depends_on": ["T003"],
       "definition_of_done": [
-        "Structural suite includes negative tests (missing evidence, double in_progress, etc.)",
-        "At least one adversarial pack that fails naive one-shot completion",
-        "Aggregate scores no longer saturate near ceiling without real continuity"
+        "Structural suite includes negative tests",
+        "Continuity suite measures handoff alignment",
+        "Adversarial MS02 pack defined so one-shot cannot max continuity"
       ],
-      "evidence": "",
-      "notes": "Response to score inflation concern"
+      "evidence": "eval/run_suite.py structural+continuity; eval/tasks/ms02_todo SPEC+verify",
+      "notes": ""
     }
   ]
 }

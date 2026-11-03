@@ -32,9 +32,9 @@ if command -v python3 >/dev/null 2>&1; then
     || { echo "FAIL: feature_list.json invalid"; exit 1; }
 
   if [[ -d eval ]]; then
-    python3 -m eval.run_suite --suite structural --quiet \
-      && echo "OK: structural suite passed" \
-      || { echo "FAIL: structural suite"; exit 1; }
+    python3 -m eval.run_suite --suite all --quiet \
+      && echo "OK: structural+continuity suites passed" \
+      || { echo "FAIL: eval suite"; exit 1; }
   fi
 else
   echo "WARN: python3 not found; skipped JSON/suite checks"

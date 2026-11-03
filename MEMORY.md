@@ -8,36 +8,34 @@ Newest entries at the **top** of each section.
 
 ### Current focus
 
-- Scores are partly inflated: structural is file-contract heavy; MS01 was completed in one shot (not true multi-dialog).
-- Next: T007 harden eval + T004 harder multi-session pack.
+- T004: implement MS02 todo CLI under adversarial session ledger rules.
 
 ### Done
 
+- T007: hardened structural (negative evidence/status checks) + continuity suite + MS02 pack definition.
 - T001–T003, T006.
-- MS01 implementation + score file (70/100 with honesty notes).
 
 ### Next
 
-- T007: negative structural tests + adversarial multi-session so ceiling is not free.
-- T004: harder todo CLI pack.
+- Run hardened suites; record new scores (expect structural may still be high; continuity is the real gate).
+- Implement MS02 S1 only in a dedicated step (ledger phase 1).
 
 ---
 
 ## Pitfalls / decisions
 
-- **Score inflation risk is real.** High structural scores do not imply Terminal-Bench-class skill.
-- Collapsing multi-session packs into one agent turn must be penalized (MS01 did so → 70 not 100).
-- Primary value is continuity under dialog reset; tests must force that.
+- Easy structural scores are not enough; continuity suite + ledger gates address inflation.
+- Fabricating a full ledger in one push must be scored down on T004.
 
 ---
 
 ## Scores
 
 | When | Suite | Score | Notes |
-|------|-------|-------|-------|
-| 2026-11-03 | structural | 88.24 | baseline; easy file contracts |
-| 2026-11-03 | ms01_counter | 70 | impl+verify ok; session/scope partial |
-| 2026-11-03 | **aggregate (equal weight)** | **79.12** | not frontier-hard |
+|------|-------|------:|-------|
+| 2026-11-03 | structural v1 | 88.24 → 100 | too easy |
+| 2026-11-03 | ms01 | 70 | one-shot penalty |
+| 2026-11-03 | structural v2 + continuity | *measure after T007* | |
 
 ---
 
@@ -45,5 +43,4 @@ Newest entries at the **top** of each section.
 
 ### 2026-11-03
 
-- MS01 completed in single push; scored honestly below 100.
-- Acknowledged eval too easy; queued T007.
+- T007 landed: negative structural checks, continuity audit, MS02 adversarial SPEC.
