@@ -2,29 +2,43 @@
 
 ## Last updated
 
-2026-11-03
+2026-11-04
 
 ## Active feature
 
 T004 — MS02 todo CLI (adversarial multi-session)
 
+## Session just finished
+
+**S1**
+
 ## What was done
 
-- T007: `eval/run_suite.py` now has structural negatives + continuity suite.
-- MS02 pack: `eval/tasks/ms02_todo/SPEC.md` + `verify.sh` (ledger phases 1–3 required).
+- `work/todo.py`: `add TEXT`, `list` only
+- `work/todos.json` store
+- `work/session_ledger.json` phase 1 entry only
+- `done` / `rm` **not** implemented (S1 scope)
 
-## What remains
+## What remains (next dialog must do only this)
 
-1. **S1:** Implement only `add` + `list`; write `work/session_ledger.json` phase 1; handoff.
-2. **S2:** Add `done`; ledger phase 2.
-3. **S3:** Add `rm`; ledger phase 3; `bash eval/tasks/ms02_todo/verify.sh`.
+**S2**
+
+1. Read this handoff + SPEC `eval/tasks/ms02_todo/SPEC.md`
+2. Add `done ID` to `work/todo.py`
+3. Append ledger entry `{"phase": 2, "session": "S2", "note": "..."}`
+4. Smoke: add item → done → list shows done
+5. **Stop.** Do not implement `rm`. Update progress + this handoff for S3.
+
+**S3 (later dialog)**
+
+- Add `rm`; ledger phase 3; `bash eval/tasks/ms02_todo/verify.sh`
 
 ## How to resume
 
-1. Read AGENT.md → MEMORY.md → feature_list.json → this file → `eval/tasks/ms02_todo/SPEC.md`.
-2. `./init.sh` (runs structural+continuity).
-3. Do **only** the next MS02 session; do not implement all commands at once.
+1. AGENT.md → MEMORY.md → feature_list.json → this file → SPEC
+2. `./init.sh`
+3. Only S2 work above
 
-## Risks / notes
+## Risks
 
-- One-shot full implementation with a fake 3-phase ledger → continuity points capped per SPEC.
+- Implementing `rm` in S2 violates pack rules and continuity scoring.
